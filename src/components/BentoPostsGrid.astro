@@ -1,0 +1,166 @@
+﻿---
+const {
+  title = "Najnowsze wpisy",
+  posts = [
+    {
+      title: "Powołanie przy krzewie gorejącym",
+      excerpt: "Przełomowy moment, w którym Mojżesz słyszy wezwanie i otrzymuje misję wyprowadzenia ludu.",
+      date: "12 stycznia 2026",
+      tag: "Historia",
+    },
+    {
+      title: "Dziesięć plag i spór o wolność",
+      excerpt: "Jak narracja o plagach ukazuje napięcie między władzą a odpowiedzialnością moralną.",
+      date: "4 lutego 2026",
+      tag: "Analiza",
+    },
+    {
+      title: "Przejście przez Morze Czerwone",
+      excerpt: "Symboliczny i teologiczny wymiar drogi przez wodę jako początku nowej tożsamości wspólnoty.",
+      date: "17 lutego 2026",
+      tag: "Egzegeza",
+    },
+    {
+      title: "Dekalog jako fundament etyki",
+      excerpt: "Dziesięć słów nie jako zakazy, lecz struktura relacji: z Bogiem, drugim człowiekiem i sobą.",
+      date: "21 lutego 2026",
+      tag: "Refleksja",
+    },
+    {
+      title: "Mojżesz jako lider w kryzysie",
+      excerpt: "Przywództwo oparte na słuchaniu, cierpliwości i mediacji między konfliktem a nadzieją.",
+      date: "23 lutego 2026",
+      tag: "Przywództwo",
+    },
+  ],
+} = Astro.props;
+---
+
+<section class="posts-wrap">
+  <div class="posts-head">
+    <h2>{title}</h2>
+    <a href="/posts/">Zobacz wszystkie</a>
+  </div>
+
+  <div class="posts-grid" role="list">
+    {
+      posts.map((post, index) => (
+        <article
+          role="listitem"
+          class:list={[
+            "post-card",
+            index === 0 && "post-card-featured",
+            index === 3 && "post-card-tall",
+          ]}
+        >
+          <p class="post-tag">{post.tag}</p>
+          <h3>{post.title}</h3>
+          <p class="post-excerpt">{post.excerpt}</p>
+          <time>{post.date}</time>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .posts-wrap {
+    margin-top: 1.2rem;
+  }
+
+  .posts-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.95rem;
+  }
+
+  h2 {
+    margin: 0;
+    font-family: "Geist", "Inter", sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  .posts-head a {
+    color: #3f5d4b;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 999px;
+    border: 1px solid rgba(129, 199, 132, 0.4);
+    padding: 0.4rem 0.75rem;
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .posts-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  .post-card {
+    border-radius: 24px;
+    border: 1px solid #d4e5d7;
+    background: #ffffff;
+    padding: 1.2rem;
+    box-shadow: 0 18px 38px rgba(89, 131, 95, 0.1);
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .post-card-featured {
+    background: linear-gradient(150deg, rgba(129, 199, 132, 0.2), rgba(255, 255, 255, 0.98));
+  }
+
+  .post-tag {
+    width: fit-content;
+    margin: 0;
+    color: #456052;
+    border-radius: 999px;
+    border: 1px solid rgba(129, 199, 132, 0.5);
+    padding: 0.25rem 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: #f7fbf4;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.3;
+    font-family: "Geist", "Inter", sans-serif;
+  }
+
+  .post-excerpt {
+    margin: 0;
+    color: #4e6356;
+    line-height: 1.8;
+  }
+
+  time {
+    color: #5f7767;
+    font-size: 0.88rem;
+    margin-top: 0.3rem;
+  }
+
+  @media (min-width: 760px) {
+    .posts-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1080px) {
+    .posts-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .post-card-featured {
+      grid-column: span 2;
+    }
+
+    .post-card-tall {
+      grid-row: span 2;
+    }
+  }
+</style>
+

@@ -1,0 +1,86 @@
+﻿---
+const {
+  title = "Mojżesz: Prorok i Wyzwoliciel",
+  lead = "Historia Mojżesza to opowieść o odwadze, zaufaniu i drodze od niewoli ku wolności. Współczesny, czytelny układ pomaga skupić się na treści i refleksji.",
+} = Astro.props;
+---
+
+<section class="hero surface">
+  <p class="hero-kicker">Biblical Blog</p>
+  <h1>{title}</h1>
+  <p>{lead}</p>
+  <div class="hero-actions">
+    <a href="/posts/" class="button button-solid">Zobacz wpisy</a>
+    <a href="/about/" class="button">Poznaj projekt</a>
+  </div>
+</section>
+
+<style>
+  .hero {
+    border-radius: 24px;
+    padding: clamp(1.4rem, 3vw, 2.5rem);
+    display: grid;
+    gap: 1rem;
+    background:
+      linear-gradient(135deg, rgba(129, 199, 132, 0.18), rgba(255, 255, 255, 0.96)),
+      #ffffff;
+  }
+
+  .hero-kicker {
+    margin: 0;
+    display: inline-flex;
+    width: fit-content;
+    border: 1px solid rgba(129, 199, 132, 0.45);
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: #4c6656;
+    background: rgba(255, 255, 255, 0.72);
+  }
+
+  h1 {
+    margin: 0;
+    font-family: "Geist", "Inter", sans-serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+
+  p {
+    margin: 0;
+    max-width: 68ch;
+    color: #4e6356;
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+    line-height: 1.9;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+  }
+
+  .button {
+    border-radius: 999px;
+    border: 1px solid rgba(129, 199, 132, 0.4);
+    padding: 0.62rem 1rem;
+    font-weight: 600;
+    font-size: 0.94rem;
+    color: #395347;
+    background: rgba(255, 255, 255, 0.75);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+  }
+
+  .button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(89, 131, 95, 0.12);
+  }
+
+  .button-solid {
+    background: #81c784;
+    color: #11321d;
+    border-color: #81c784;
+  }
+</style>

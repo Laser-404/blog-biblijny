@@ -1,0 +1,193 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const autorzy = ["Jan Jędrzejczak", "Oliwier Jacek", "Michał Wiler"];
+const technologie = ["Astro.build", "HTML", "CSS"];
+---
+
+<BaseLayout
+  title="Blog Biblijny | O projekcie"
+  description="Misja projektu, zaplecze techniczne i zespół projektowy."
+>
+  <section class="about-page">
+    <header class="surface team-header">
+      <p class="team-title">ZESPÓŁ PROJEKTOWY</p>
+      <div class="team-row" role="list" aria-label="Autorzy projektu">
+        {
+          autorzy.map((autor) => (
+            <span class="author-pill" role="listitem">{autor}</span>
+          ))
+        }
+      </div>
+    </header>
+
+    <div class="main-grid">
+      <article class="surface content-card">
+        <h1>O Projekcie</h1>
+        <p>
+          Blog przedstawia historię Mojżesza w nowoczesnej, czytelnej formie, która ułatwia
+          szybkie zrozumienie najważniejszych wydarzeń. Misją projektu jest łączenie rzetelnej
+          treści biblijnej z minimalistycznym interfejsem, który nie rozprasza odbiorcy.
+        </p>
+        <p>
+          Dzięki spójnej strukturze i estetyce Bento użytkownik może skupić się na sensie
+          przekazu oraz wygodnie poruszać się między tematami. Serwis wspiera edukację szkolną
+          i samodzielną naukę, zachowując profesjonalny, spokojny charakter.
+        </p>
+      </article>
+
+      <article class="surface content-card">
+        <h2>Część techniczna</h2>
+        <p>
+          Strona została zbudowana od podstaw w podejściu komponentowym, co upraszcza rozwój
+          i utrzymanie całego projektu. Układ zachowuje wysoką wydajność, responsywność oraz
+          czytelność na ekranach mobilnych i desktopowych.
+        </p>
+        <p>
+          Warstwa wizualna opiera się na lekkim systemie stylów, który zapewnia spójność i dobry
+          kontrast treści. Architektura została zaplanowana tak, aby łatwo rozszerzać blog
+          o kolejne artykuły i sekcje tematyczne.
+        </p>
+
+        <div class="tech-pill-row" role="list" aria-label="Stos technologiczny">
+          {
+            technologie.map((technologia) => (
+              <span class="tech-pill" role="listitem">{technologia}</span>
+            ))
+          }
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-page {
+    min-height: 90vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 3rem;
+    background: #f1f8e9;
+    border-radius: 32px;
+    padding: clamp(1.5rem, 3vw, 3rem);
+  }
+
+  .team-header {
+    min-height: 190px;
+    border-radius: 32px;
+    border: 1px solid rgba(129, 199, 132, 0.34);
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.92),
+      rgba(241, 248, 233, 0.88)
+    );
+    box-shadow: 0 14px 30px rgba(76, 120, 83, 0.1);
+    padding: 2rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.2rem;
+  }
+
+  .team-title {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    color: #355846;
+    text-transform: uppercase;
+  }
+
+  .team-row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .author-pill {
+    background: #1b5e20;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 50px;
+    padding: 1rem 2.5rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    box-shadow: 0 10px 22px rgba(27, 94, 32, 0.25);
+  }
+
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  .content-card {
+    height: 100%;
+    border-radius: 32px;
+    border: 1px solid rgba(129, 199, 132, 0.32);
+    background:
+      linear-gradient(155deg, rgba(241, 248, 233, 0) 0%, rgba(241, 248, 233, 0.9) 100%),
+      #ffffff;
+    box-shadow: 0 18px 36px rgba(76, 120, 83, 0.12);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  h1,
+  h2 {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: #1f2b22;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 3vw, 2.9rem);
+  }
+
+  h2 {
+    font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  }
+
+  p {
+    margin: 0;
+    color: #365345;
+    font-size: 1.15rem;
+    line-height: 1.6;
+  }
+
+  .tech-pill-row {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .tech-pill {
+    border-radius: 999px;
+    background: #1b5e20;
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.4rem 0.8rem;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
+
+  @media (min-width: 980px) {
+    .main-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
