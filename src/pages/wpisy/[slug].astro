@@ -1,0 +1,26 @@
+---
+import PostLayout from "../../layouts/PostLayout.astro";
+import { posts } from "../../data/posts";
+import type { Post } from "../../data/posts";
+
+export function getStaticPaths() {
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props as { post: Post };
+const recentPosts = posts.filter((entry) => entry.slug !== post.slug).slice(0, 2);
+---
+
+<PostLayout post={post} recentPosts={recentPosts}>
+  {
+    post.sections.map((section) => (
+      <section id={section.id} aria-labelledby={`${section.id}-title`}>
+        <h2 id={`${section.id}-title`}>{section.heading}</h2>
+        {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </section>
+    ))
+  }
+</PostLayout>

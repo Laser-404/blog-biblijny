@@ -6,37 +6,38 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   title="Blog Biblijny | Strona główna"
   description="Nowoczesne podejście edukacyjne do historii Mojżesza."
 >
-  <section class="home-layout fade-up">
+  <section class="home-layout">
     <article class="surface hero-card">
       <p class="hero-kicker">Blog edukacyjny</p>
       <h1>Blog Biblijny: Historia Mojżesza</h1>
       <p>
-        Witaj na nowoczesnej stronie poświęconej historii Mojżesza. Łączymy rzetelne treści biblijne
-        z przejrzystą formą, aby nauka była prostsza, szybsza i bardziej angażująca.
+        To nowoczesna przestrzeń poświęcona historii Mojżesza, przygotowana z myślą o czytelnej
+        nauce i spokojnym odbiorze treści. Łączymy uporządkowaną wiedzę biblijną z minimalistycznym,
+        przyjaznym interfejsem.
       </p>
       <div class="hero-actions">
-        <a href="/posts/" class="pill-btn">Przeglądaj wpisy</a>
-        <a href="/about/" class="pill-btn">Poznaj projekt</a>
+        <a href="/wpisy/" class="pill-btn">Przeglądaj wpisy</a>
+        <a href="/about/" class="pill-btn secondary">Poznaj projekt</a>
       </div>
     </article>
 
-    <section class="bottom-grid" aria-label="Nawigacja główna">
+    <section class="bottom-grid" aria-label="Najważniejsze sekcje">
       <article class="surface nav-card">
         <h2>O projekcie</h2>
         <p>
-          Poznaj zespół autorów, założenia merytoryczne oraz technologie użyte do budowy nowoczesnego
-          bloga biblijnego.
+          Poznaj założenia bloga, autorów oraz techniczne podstawy projektu zbudowanego wokół
+          historii Mojżesza.
         </p>
         <a href="/about/" class="pill-btn">Czytaj więcej</a>
       </article>
 
       <article class="surface nav-card">
-        <h2>Najnowsze Wpisy</h2>
+        <h2>Wpisy</h2>
         <p>
-          Wejdź do archiwum historii i odkryj najważniejsze wydarzenia z życia Mojżesza opisane
-          w krótkich, uporządkowanych artykułach.
+          Wejdź do archiwum i zobacz wyróżniony tekst oraz kolejne artykuły prowadzące przez
+          kluczowe momenty biblijnej narracji.
         </p>
-        <a href="/posts/" class="pill-btn">Zobacz wszystkie</a>
+        <a href="/wpisy/" class="pill-btn">Zobacz wszystkie</a>
       </article>
     </section>
   </section>
@@ -115,9 +116,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     transition: background-color 160ms ease, border-color 160ms ease;
   }
 
+  .pill-btn.secondary {
+    background: rgba(255, 255, 255, 0.86);
+    color: #1b5e20;
+  }
+
   .pill-btn:hover {
     background: #154a19;
     border-color: #154a19;
+    color: #ffffff;
   }
 
   .bottom-grid {

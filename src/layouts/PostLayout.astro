@@ -1,0 +1,190 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import type { Post } from "../data/posts";
+
+const {
+  post,
+  recentPosts = [],
+} = Astro.props as {
+  post: Post;
+  recentPosts?: Post[];
+};
+---
+
+<BaseLayout title={`Blog Biblijny | ${post.title}`} description={post.excerpt}>
+  <section class="reading-shell">
+    <article class="reading-card">
+      <p class="eyebrow">{post.category} | {post.date}</p>
+      <h1>{post.title}</h1>
+      <p class="lead">{post.lead}</p>
+      <div class="article-body">
+        <slot />
+      </div>
+    </article>
+
+    <aside class="sidebar">
+      <section class="sidebar-card">
+        <h2>Spis treści</h2>
+        <nav aria-label="Spis treści">
+          <ul class="toc-list">
+            {
+              post.sections.map((section) => (
+                <li>
+                  <a href={`#${section.id}`}>{section.heading}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </section>
+
+      <section class="sidebar-card">
+        <h2>Ostatnie wpisy</h2>
+        <ul class="recent-list">
+          {
+            recentPosts.map((entry) => (
+              <li>
+                <a href={`/wpisy/${entry.slug}/`}>{entry.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </aside>
+  </section>
+</BaseLayout>
+
+<style>
+  .reading-shell {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .reading-card,
+  .sidebar-card {
+    border-radius: 30px;
+    border: 1px solid rgba(129, 199, 132, 0.3);
+    box-shadow: 0 18px 36px rgba(84, 120, 80, 0.12);
+  }
+
+  .reading-card {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 252, 245, 0.98)),
+      repeating-linear-gradient(
+        0deg,
+        rgba(241, 248, 233, 0.08) 0 24px,
+        rgba(255, 255, 255, 0.08) 24px 48px
+      );
+    padding: clamp(1.6rem, 4vw, 3rem);
+  }
+
+  .eyebrow {
+    margin: 0;
+    color: #557062;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  h1,
+  h2,
+  .article-body h2 {
+    margin: 0;
+    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    color: #1d2a21;
+    letter-spacing: -0.01em;
+  }
+
+  h1 {
+    margin-top: 0.9rem;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.05;
+  }
+
+  .lead {
+    margin: 1rem 0 0;
+    font-size: clamp(1.08rem, 1.8vw, 1.22rem);
+    line-height: 1.9;
+    color: #425649;
+    max-width: 65ch;
+  }
+
+  .article-body {
+    margin-top: 1.6rem;
+    display: grid;
+    gap: 1.8rem;
+    max-width: 68ch;
+  }
+
+  .article-body section {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .article-body h2 {
+    font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+    line-height: 1.15;
+  }
+
+  .article-body p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.95;
+    color: #34483c;
+  }
+
+  .sidebar {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .sidebar-card {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 1.2rem;
+  }
+
+  .sidebar-card h2 {
+    font-family: "Geist", "Inter", sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #3b5a48;
+  }
+
+  .toc-list,
+  .recent-list {
+    margin: 0.9rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .toc-list a,
+  .recent-list a {
+    color: #355345;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .toc-list a:hover,
+  .recent-list a:hover {
+    color: #1b5e20;
+  }
+
+  @media (min-width: 1024px) {
+    .reading-shell {
+      grid-template-columns: minmax(0, 1fr) 290px;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 6.5rem;
+    }
+  }
+</style>
