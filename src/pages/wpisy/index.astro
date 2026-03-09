@@ -3,7 +3,20 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import BentoPostsGrid from "../../components/BentoPostsGrid.astro";
 import { posts } from "../../data/posts";
 
-const [featuredPost, ...remainingPosts] = posts;
+const timelineOrder = [
+  "ocalony-z-nilu-tajemnica-koszyka-w-trzcinach",
+  "ksiaze-ktory-stal-sie-wygnancem",
+  "plonacy-krzew-glos-ktory-zmienil-wszystko",
+  "plagi-egipskie-starcie-dwoch-swiatow",
+  "przejscie-przez-morze-cud-wolnosci",
+  "dekalog-fundamenty-nowej-cywilizacji",
+];
+
+const orderedPosts = [...posts].sort(
+  (a, b) => timelineOrder.indexOf(a.slug) - timelineOrder.indexOf(b.slug),
+);
+
+const [featuredPost, ...remainingPosts] = orderedPosts;
 ---
 
 <BaseLayout
@@ -13,12 +26,13 @@ const [featuredPost, ...remainingPosts] = posts;
   <section class="posts-page">
     <header class="surface posts-intro">
       <h1 class="posts-title">Poznaj historię Mojżesza: Od Nilu do Ziemi Obiecanej.</h1>
+      <p class="timeline-hint">Układ chronologiczny: od najstarszych wydarzeń do najnowszych.</p>
     </header>
 
     <a class="featured-link" href={`/wpisy/${featuredPost.slug}/`}>
       <article class="surface featured-card">
         <div class="featured-meta">
-          <span class="featured-pill">Wpis wyróżniony</span>
+          <span class="featured-pill">Najstarsze wydarzenie</span>
           <span class="featured-date">{featuredPost.date}</span>
         </div>
         <h1>{featuredPost.title}</h1>
@@ -27,7 +41,7 @@ const [featuredPost, ...remainingPosts] = posts;
       </article>
     </a>
 
-    <BentoPostsGrid title="Pozostałe wpisy" posts={remainingPosts} />
+    <BentoPostsGrid title="Kolejne etapy życia Mojżesza (najnowsze na końcu)" posts={remainingPosts} />
   </section>
 </BaseLayout>
 
@@ -49,6 +63,13 @@ const [featuredPost, ...remainingPosts] = posts;
     letter-spacing: -0.01em;
     color: #1f2b22;
     max-width: 24ch;
+  }
+
+  .timeline-hint {
+    margin: 0.75rem 0 0;
+    color: #3e5748;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .featured-link {
@@ -96,7 +117,7 @@ const [featuredPost, ...remainingPosts] = posts;
     max-width: 18ch;
   }
 
-  p {
+  .featured-card p {
     margin: 0;
     max-width: 65ch;
     color: #405649;

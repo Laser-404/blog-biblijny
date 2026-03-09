@@ -23,7 +23,7 @@ export const posts: Post[] = [
       "Poznaj historię dziecka, które miało zginąć w Nilu, a stało się największym prorokiem w historii.",
     lead:
       "Narodziny Mojżesza rozgrywają się w cieniu królewskiego dekretu, który skazywał hebrajskich chłopców na śmierć. To opowieść o odwadze, matczynej strategii i nieoczekiwanym ocaleniu.",
-    date: "8 marca 2026",
+    date: "8 lutego 2026",
     category: "Narodziny",
     thumbnailLabel: "Koszyk w trzcinach",
     sections: [
@@ -52,7 +52,7 @@ export const posts: Post[] = [
       "Dworskie wychowanie nie zatarło jego pochodzenia, a jeden gwałtowny czyn otworzył drogę na pustynne wygnanie.",
     lead:
       "Mojżesz, wychowany jak książę, staje wobec dramatycznego wyboru między bezpieczeństwem pałacu a solidarnością z własnym ludem. Cena tego wyboru okazuje się bardzo wysoka.",
-    date: "12 marca 2026",
+    date: "12 lutego 2026",
     category: "Tożsamość",
     thumbnailLabel: "Dwór i pustynia",
     sections: [
@@ -81,7 +81,7 @@ export const posts: Post[] = [
       "Na pustyni Mojżesz słyszy wezwanie, które zamienia pasterza w rzecznika wolności dla całego narodu.",
     lead:
       "Scena płonącego krzewu stanowi duchowy punkt zwrotny historii Mojżesza. To chwila, w której niepewność spotyka się z jasnym i wymagającym powołaniem.",
-    date: "16 marca 2026",
+    date: "16 lutego 2026",
     category: "Przełom",
     thumbnailLabel: "Ogień na pustyni",
     sections: [
@@ -110,7 +110,7 @@ export const posts: Post[] = [
       "Seria plag pokazuje nie tylko katastrofy naturalne, ale przede wszystkim konflikt między pychą imperium a wolnością uciśnionych.",
     lead:
       "Plagi egipskie są jednym z najbardziej intensywnych momentów narracji o wyjściu z niewoli. Każdy kolejny znak podważa pewność faraona i zmienia bieg historii.",
-    date: "20 marca 2026",
+    date: "20 lutego 2026",
     category: "Konflikt",
     thumbnailLabel: "Znaki nad Egiptem",
     sections: [
@@ -139,7 +139,7 @@ export const posts: Post[] = [
       "W chwili bez wyjścia naród doświadcza przejścia, które na zawsze definiuje sens wolności i zaufania.",
     lead:
       "Scena przejścia przez morze należy do najważniejszych obrazów biblijnej pamięci historycznej. Pokazuje graniczny moment między niewolą a nowym początkiem.",
-    date: "24 marca 2026",
+    date: "24 lutego 2026",
     category: "Cud",
     thumbnailLabel: "Droga przez morze",
     sections: [
@@ -168,7 +168,7 @@ export const posts: Post[] = [
       "Na Synaju rodzi się porządek, który porządkuje relacje społeczne i wyznacza etyczny kierunek dla całej wspólnoty.",
     lead:
       "Dekalog to nie tylko zbiór przykazań, ale też projekt ładu społecznego po doświadczeniu exodusu. W tradycji biblijnej staje się fundamentem odpowiedzialności za Boga i drugiego człowieka.",
-    date: "29 marca 2026",
+    date: "28 lutego 2026",
     category: "Prawo",
     thumbnailLabel: "Synaj i tablice",
     sections: [
